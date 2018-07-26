@@ -1,9 +1,5 @@
 package com.sunlands.feo.demo.common;
 
-import com.google.gson.GsonBuilder;
-import com.sunlands.feo.demo.util.JsonUtil;
-
-
 import java.io.Serializable;
 
 /**
