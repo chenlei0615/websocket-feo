@@ -2,6 +2,7 @@ package com.sunlands.feo.demo.role;
 
 import com.sunlands.feo.demo.base.BaseEntity;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,6 +18,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "user_role")
+@Data
 public class UserRole extends BaseEntity {
     @ApiModelProperty("角色名字")
     @Column(name = "role_name")

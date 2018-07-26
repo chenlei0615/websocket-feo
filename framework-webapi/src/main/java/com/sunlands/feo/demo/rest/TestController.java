@@ -20,7 +20,7 @@ import java.util.Date;
  * ------------    --------------    ---------------------------------
  */
 @RestController
-@RequestMapping("/test")
+@RequestMapping("/")
 public class TestController {
     private static final Logger logger = LoggerFactory.getLogger(TestController.class);
 
@@ -30,5 +30,11 @@ public class TestController {
         Date date=CommonMethod.getCurDate();
         SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         return "当前时间："+sdf.format(date);
+    }
+
+    @ApiOperation("你好")
+    @GetMapping("/hello")
+    public String hello(){
+        return "hello ：huayra";
     }
 }
