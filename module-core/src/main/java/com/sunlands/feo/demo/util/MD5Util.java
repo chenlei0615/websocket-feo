@@ -18,7 +18,7 @@ public class MD5Util {
 
         private static final String SALT = "";
 
-        private static final String WECAHT_SALT="yy_aa";
+        private static final String WECAHT_SALT="";
 
         public static String encode(String password) {
             password = password + SALT;

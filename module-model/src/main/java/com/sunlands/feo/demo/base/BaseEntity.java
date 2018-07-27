@@ -5,6 +5,7 @@ import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import java.sql.Timestamp;
@@ -21,7 +22,9 @@ import java.sql.Timestamp;
 @MappedSuperclass
 public abstract class BaseEntity {
     @Id
-    @GenericGenerator(name = "system-uuid", strategy = "uuid2")
+    @GeneratedValue(generator  = "sys_strategy")
+    @GenericGenerator(name = "sys_strategy", strategy = "uuid")
+    @Column(length = 32)
     private String id;
 
     @ApiModelProperty("创建时间")

@@ -25,7 +25,7 @@ import java.util.*;
 public class SysUser extends BaseEntity implements UserDetails {
     @ApiModelProperty("名字")
     @Column(name = "user_name")
-    private String userName;
+    private String username;
 
     @ApiModelProperty("密码")
     @Column(name="password")
@@ -58,7 +58,7 @@ public class SysUser extends BaseEntity implements UserDetails {
 
     @Override
     public String getUsername() {
-        return userName;
+        return username;
     }
 
     @Override
