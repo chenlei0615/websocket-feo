@@ -5,8 +5,8 @@ import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
 
 /**
- * @Project : score_query_backend
- * @Package Name : com.sunlands.wx.feo.utils
+ * @Project : websocket-feo
+ * @Package Name : com.sunlands.feo.demo.util
  * @Description : :信任管理器
  * @Author : chenlei
  * @Create Date : 2018年05月09日 20:25

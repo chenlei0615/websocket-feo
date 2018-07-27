@@ -3,8 +3,8 @@ package com.sunlands.feo.demo.util;
 import java.util.regex.Pattern;
 
 /**
- * @Project : score_query_backend
- * @Package Name : com.sunlands.wx.feo.utils
+ * @Project : websocket-feo
+ * @Package Name : com.sunlands.feo.demo.util
  * @Description : 验证工具
  * @Author : chenlei
  * @Create Date : 2018年05月07日 12:06

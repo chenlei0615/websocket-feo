@@ -8,8 +8,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * @Project : score_query_backend
- * @Package Name : com.sunlands.wx.feo.utils
+ * @Project : websocket-feo
+ * @Package Name : com.sunlands.feo.demo.util
  * @Description : 字段检查工具类
  * @Author : chenlei
  * @Create Date : 2018年05月09日 19:51

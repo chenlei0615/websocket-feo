@@ -23,8 +23,8 @@ import java.nio.charset.Charset;
 import java.security.SecureRandom;
 
 /**
- * @Project : score_query_backend
- * @Package Name : com.sunlands.wx.feo.utils
+ * @Project : websocket-feo
+ * @Package Name : com.sunlands.feo.demo.util
  * @Description : http工具
  * @Author : chenlei
  * @Create Date : 2018年05月08日 19:08

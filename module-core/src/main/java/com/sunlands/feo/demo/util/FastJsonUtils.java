@@ -11,8 +11,8 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @Project : score_query_backend
- * @Package Name : com.sunlands.wx.feo.utils
+ * @Project : websocket-feo
+ * @Package Name : com.sunlands.feo.demo.util
  * @Description : 数类型转换工具类
  * @Author : chenlei
  * @Create Date : 2018年05月08日 19:12

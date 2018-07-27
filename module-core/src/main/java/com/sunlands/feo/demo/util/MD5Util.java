@@ -3,8 +3,8 @@ package com.sunlands.feo.demo.util;
 import java.security.MessageDigest;
 
 /**
- * @Project : score_query_backend
- * @Package Name : com.sunlands.wx.feo.utils
+ * @Project : websocket-feo
+ * @Package Name : com.sunlands.feo.demo.util
  * @Description : MD5工具
  * @Author : chenlei
  * @Create Date : 2018年05月07日 11:00

@@ -7,8 +7,8 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
- * @Project : score_query_backend
- * @Package Name : com.sunlands.wx.feo.utils
+ * @Project : websocket-feo
+ * @Package Name : com.sunlands.feo.demo.util
  * @Description : 时间工具类
  * @Author : chenlei
  * @Create Date : 2018年05月17日 10:00

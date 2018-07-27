@@ -8,8 +8,8 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * @Project : score_query_backend
- * @Package Name : com.sunlands.wx.feo.utils
+ * @Project : websocket-feo
+ * @Package Name : com.sunlands.feo.demo.util
  * @Description : 公共工具
  * @Author : chenlei
  * @Create Date : 2018年05月06日 20:37
