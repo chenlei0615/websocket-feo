@@ -43,8 +43,8 @@
 
     <logger name="com.sunlands" level="DEBUG" additivity="true" />
     <logger name="org.mybatis.spring" level="ERROR" additivity="true" />
-    <logger name="com.sunlands.elearning.fn.message.dao.MessageMapper" level="ERROR" additivity="true" />
     <logger name="org.springframework" level="ERROR" additivity="true" />
+    <logger name="org.springframework.security" level="ERROR" additivity="true" />
     <logger name="org.hibernate" level="ERROR" additivity="true" />
     <logger name="org.springframework.web.servlet.mvc" level="INFO" additivity="true" />
     <logger name="springfox.documentation" level="ERROR" additivity="true" />

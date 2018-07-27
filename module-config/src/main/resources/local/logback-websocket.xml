@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <included>
 
-    <!--<conversionRule conversionWord="clr" converterClass="org.springframework.boot.logging.logback.ColorConverter" />-->
-    <!--<conversionRule conversionWord="wex" converterClass="org.springframework.boot.logging.logback.WhitespaceThrowableProxyConverter" />-->
-    <!--<conversionRule conversionWord="wEx" converterClass="org.springframework.boot.logging.logback.ExtendedWhitespaceThrowableProxyConverter" />-->
-
-
     <property name="CONSOLE_LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} ${LOG_LEVEL_PATTERN:-%5p} ${PID:- } --- [%t] %-40.40logger{39} : %m%n"/>
     <property name="FILE_LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} ${LOG_LEVEL_PATTERN:-%5p} ${PID:- } --- [%t] %-40.40logger{39} : %m%n"/>
 
-    <property name="LOG_HOME" value="/Users/knight/workspace/logs" />
+    <property name="LOG_HOME" value="/opt/websocket" />
     <!-- 控制台输出 -->
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <!-- encoder默认配置为PartternLayoutEncoder    -->
@@ -48,8 +43,8 @@
 
     <logger name="com.sunlands" level="DEBUG" additivity="true" />
     <logger name="org.mybatis.spring" level="ERROR" additivity="true" />
-    <logger name="com.sunlands.elearning.fn.message.dao.MessageMapper" level="ERROR" additivity="true" />
     <logger name="org.springframework" level="ERROR" additivity="true" />
+    <logger name="org.springframework.security" level="ERROR" additivity="true" />
     <logger name="org.hibernate" level="ERROR" additivity="true" />
     <logger name="org.springframework.web.servlet.mvc" level="INFO" additivity="true" />
     <logger name="springfox.documentation" level="ERROR" additivity="true" />

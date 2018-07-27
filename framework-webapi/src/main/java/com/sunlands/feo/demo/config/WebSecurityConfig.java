@@ -19,7 +19,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
  * ------------    --------------    ---------------------------------
  */
 @Configuration
-@EnableWebSecurity // 注解开启Spring Security的功能
+@EnableWebSecurity // 注解开启Spring Security的功能，启动web权限控制
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     @Override

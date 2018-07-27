@@ -33,7 +33,7 @@ public class SysUser extends BaseEntity implements UserDetails {
 
     @ApiModelProperty("角色")
     @ManyToMany(targetEntity = UserRole.class, fetch = FetchType.EAGER)
-    @JoinTable(name = "user_role", joinColumns = {@JoinColumn(name = "user_id")}, inverseJoinColumns = {@JoinColumn(name = "role_id")})
+    @JoinTable(name = "sys_user_role", joinColumns = {@JoinColumn(name = "user_id")}, inverseJoinColumns = {@JoinColumn(name = "role_id")})
     Set<UserRole> roles =new HashSet<UserRole>();
 
 

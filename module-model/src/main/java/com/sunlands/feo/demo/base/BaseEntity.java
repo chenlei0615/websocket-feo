@@ -26,11 +26,11 @@ public abstract class BaseEntity {
 
     @ApiModelProperty("创建时间")
     @Column(name = "create_time")
-    private Timestamp createTime;
+    private Timestamp createTime=new Timestamp(System.currentTimeMillis());
 
     @ApiModelProperty("修改时间")
     @Column(name = "modify_time")
-    private Timestamp modifyTime;
+    private Timestamp modifyTime=new Timestamp(System.currentTimeMillis());
 
     @ApiModelProperty("是否删除")
     @Column(name = "deleted")

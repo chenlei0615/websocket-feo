@@ -1,15 +1,19 @@
 package com.sunlands.feo.demo.config;
 
+import com.sunlands.feo.demo.role.UserRole;
+import com.sunlands.feo.demo.role.UserRoleService;
 import com.sunlands.feo.demo.user.SysUser;
 import com.sunlands.feo.demo.user.SysUserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.List;
 
 /**
  * @Project : websocket-feo
@@ -19,10 +23,14 @@ import java.util.Collection;
  * @Create Date : 2018年07月26日 17:18
  * ------------    --------------    ---------------------------------
  */
+@Service
 public class CustomUserDetailsService implements UserDetailsService {
 
     @Autowired
     private SysUserService sysUserService;
+
+    @Autowired
+    private UserRoleService userRoleService;
 
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
@@ -35,7 +43,11 @@ public class CustomUserDetailsService implements UserDetailsService {
 
         }
 
-
+        List<UserRole> roleList=userRoleService.findByUserId(user.getId());
+        List<GrantedAuthority> grantedAuthorities = new ArrayList<GrantedAuthority>();
+        if(roleList!=null && roleList.size()>0) {
+            roleList.forEach(r->grantedAuthorities.add(new SimpleGrantedAuthority(r.getRoleName())));
+        }
         return user;
     }
 }
