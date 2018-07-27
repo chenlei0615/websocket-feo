@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -20,6 +21,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
  */
 @Configuration
 @EnableWebSecurity // 注解开启Spring Security的功能，启动web权限控制
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     @Override
@@ -34,17 +36,19 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         //允许所有用户访问"/"和"/home"
         http.authorizeRequests()
                 .antMatchers("/open/**").permitAll()
+                .antMatchers("/css/**","/js/**",
+                        "/images/**", "/webjars/**",
+                        "**/favicon.ico/**").permitAll()
                 //其他地址的访问均需验证权限
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
                 //指定登录页是"/login"
                 .loginPage("/login")
-                .defaultSuccessUrl("/admin")
+                .failureUrl("/login/?error")
                 .permitAll()
                 .and()
                 .logout()
-                .logoutSuccessUrl("/admin")
                 .permitAll();
 
     }
@@ -56,19 +60,20 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         auth
                 .userDetailsService(customUserDetailsService())
-                .passwordEncoder(passwordEncoder());
+             //   .passwordEncoder(passwordEncoder())
+        ;
 
     }
 
-    /**
-     * 设置用户密码的加密方式为MD5加密
-     * @return
-     */
-    @Bean
-    public Md5PasswordEncoder passwordEncoder() {
-        return new Md5PasswordEncoder();
-
-    }
+//    /**
+//     * 设置用户密码的加密方式为MD5加密
+//     * @return
+//     */
+//    @Bean
+//    public Md5PasswordEncoder passwordEncoder() {
+//        return new Md5PasswordEncoder();
+//
+//    }
 
     /**
      * 自定义UserDetailsService，从数据库中读取用户信息

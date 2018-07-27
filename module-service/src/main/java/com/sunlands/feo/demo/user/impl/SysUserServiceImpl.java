@@ -8,6 +8,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @Project : websocket-feo
  * @Package Name : com.sunlands.feo.demo.user.impl
@@ -23,9 +25,61 @@ public class SysUserServiceImpl implements SysUserService {
     @Autowired
     private SysUserDao sysUserDao;
 
+    /**
+     * 通过用户名查找
+     * @param userName
+     * @return
+     */
     @Override
     public SysUser findUserByName(String userName){
         SysUser sysUser=sysUserDao.findByUserName(userName);
         return sysUser;
+    }
+
+    /**
+     * 获取所有用户
+     * @return
+     */
+    @Override
+    public List<SysUser> getUserList() {
+        return sysUserDao.findAll();
+    }
+
+    /**
+     *  通过id查找用户
+     * @param id
+     * @return
+     */
+    @Override
+    public SysUser findUserById(String id) {
+        return sysUserDao.findOne(id);
+    }
+
+    /**
+     * 用户保存
+     * @param sysUser
+     * @return
+     */
+    @Override
+    public SysUser save(SysUser sysUser) {
+        return sysUserDao.saveAndFlush(sysUser);
+    }
+    /**
+     * 用户更新
+     * @param sysUser
+     * @return
+     */
+    @Override
+    public SysUser edit(SysUser sysUser) {
+        return sysUserDao.saveAndFlush(sysUser);
+    }
+    /**
+     * 用户删除
+     * @param id
+     * @return
+     */
+    @Override
+    public void delete(String id) {
+         sysUserDao.delete(id);
     }
 }

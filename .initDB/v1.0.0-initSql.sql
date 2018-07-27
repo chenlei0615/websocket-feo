@@ -75,3 +75,12 @@ insert  into `user_role`(`id`,`role_name`) values (1,'ADMIN'),(2,'USER');
 insert  into `sys_user`(`id`,`password`,`user_name`) values (1,'root','root'),(2,'admin','admin');
 
 insert  into `sys_user_role`(`user_id`,`role_id`) values (1,1),(2,2);
+
+-- deleted 设置默认值
+ALTER TABLE `sys_user`
+MODIFY COLUMN `deleted`  bit(1) NULL DEFAULT 0 AFTER `create_time`;
+ALTER TABLE `user_role`
+MODIFY COLUMN `deleted`  bit(1) NULL DEFAULT 0 AFTER `create_time`;
+
+
+

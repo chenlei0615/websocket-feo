@@ -1,5 +1,7 @@
 package com.sunlands.feo.demo.user;
 
+import java.util.List;
+
 /**
  * @Project : websocket-feo
  * @Package Name : com.sunlands.feo.demo.role
@@ -9,5 +11,45 @@ package com.sunlands.feo.demo.user;
  * ------------    --------------    ---------------------------------
  */
 public interface SysUserService {
-    public SysUser findUserByName(String userName);
+    /**
+     * 通过用户名查找
+     * @param userName
+     * @return
+     */
+     SysUser findUserByName(String userName);
+
+    /**
+     * 获取所有用户
+     * @return
+     */
+    List<SysUser> getUserList();
+
+    /**
+     *  通过id查找用户
+     * @param id
+     * @return
+     */
+    SysUser findUserById(String id);
+
+    /**
+     * 用户保存
+     * @param sysUser
+     * @return
+     */
+    SysUser save(SysUser sysUser);
+
+    /**
+     * 用户更新
+     * @param sysUser
+     * @return
+     */
+    SysUser edit(SysUser sysUser);
+
+    /**
+     * 用户删除
+     * @param id
+     * @return
+     */
+    void delete(String id);
+
 }
