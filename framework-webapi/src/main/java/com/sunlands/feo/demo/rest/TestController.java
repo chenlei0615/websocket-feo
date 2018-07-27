@@ -20,7 +20,7 @@ import java.util.Date;
  * ------------    --------------    ---------------------------------
  */
 @RestController
-@RequestMapping("/")
+@RequestMapping("/open")
 public class TestController {
     private static final Logger logger = LoggerFactory.getLogger(TestController.class);
 

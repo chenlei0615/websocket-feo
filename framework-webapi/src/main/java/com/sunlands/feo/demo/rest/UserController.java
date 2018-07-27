@@ -18,6 +18,10 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
     private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
+    @GetMapping("/login")
+    public String login(){
+        return "login";
+    }
     @PreAuthorize("hasAnyAuthority('ADMIN','USER')")
     @GetMapping("/user")
     public String user(){
@@ -28,5 +32,10 @@ public class UserController {
     @GetMapping("/admin")
     public String admin(){
         return "admin";
+    }
+
+    @GetMapping("/403")
+    public String error(){
+        return "403";
     }
 }
