@@ -27,11 +27,11 @@
     <!-- 模块说明：这里声明多个子模块 -->
     <modules>
         <module>framework-webapi</module>
-        <module>framework-common</module>
         <module>module-service</module>
         <module>module-dao</module>
         <module>module-model</module>
         <module>module-config</module>
+        <module>module-core</module>
     </modules>
 
 
@@ -50,7 +50,7 @@
             </dependency>
             <dependency>
                 <groupId>com.sunlands.feo.demo</groupId>
-                <artifactId>framework-common</artifactId>
+                <artifactId>module-core</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>

@@ -1,6 +1,6 @@
 package com.sunlands.feo.demo.rest;
 
-import com.sunlands.feo.demo.util.CommonMethod;
+import com.sunlands.feo.demo.util.DateUtil;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,7 +27,7 @@ public class TestController {
     @ApiOperation("获取当前时间")
     @GetMapping("/time")
     public String getDate(){
-        Date date=CommonMethod.getCurDate();
+        Date date=DateUtil.getCurrentTime();
         SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         return "当前时间："+sdf.format(date);
     }
