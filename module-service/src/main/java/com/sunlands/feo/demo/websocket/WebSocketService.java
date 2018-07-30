@@ -1,8 +1,8 @@
-package com.sunlands.feo.demo.websocket.impl;
+package com.sunlands.feo.demo.websocket;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import javax.websocket.*;
 import javax.websocket.server.PathParam;
@@ -13,16 +13,16 @@ import java.util.Map;
 
 /**
  * @Project : websocket-feo
- * @Package Name : com.sunlands.feo.demo.websocket.impl
+ * @Package Name : com.sunlands.feo.demo.websocket
  * @Description : websocket业务是实现层
  * @Author : chenlei
  * @Create Date : 2018年07月30日 16:13
  * ------------    --------------    ---------------------------------
  */
-@Service
+@Component
 @ServerEndpoint(value = "/socketServer/{userid}")
-public class WebSocketServiceImpl implements WebSocketService {
-    private static final Logger logger = LoggerFactory.getLogger(WebSocketServiceImpl.class);
+public class WebSocketService {
+    private static final Logger logger = LoggerFactory.getLogger(WebSocketService.class);
 
     private Session session;
     private static Map<String,Session> sessionPool = new HashMap<String,Session>();

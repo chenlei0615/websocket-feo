@@ -1,5 +1,6 @@
 package com.sunlands.feo.demo.rest;
 
+import com.sunlands.feo.demo.websocket.WebSocketService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
