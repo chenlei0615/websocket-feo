@@ -1,5 +1,7 @@
 package com.sunlands.feo.demo.role;
 
+import com.sunlands.feo.demo.model.role.UserRole;
+
 import java.util.List;
 
 /**

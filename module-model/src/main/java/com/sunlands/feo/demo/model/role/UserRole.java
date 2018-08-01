@@ -1,4 +1,4 @@
-package com.sunlands.feo.demo.role;
+package com.sunlands.feo.demo.model.role;
 
 import com.sunlands.feo.demo.base.BaseEntity;
 import io.swagger.annotations.ApiModelProperty;

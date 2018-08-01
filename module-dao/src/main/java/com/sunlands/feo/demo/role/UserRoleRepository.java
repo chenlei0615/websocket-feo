@@ -1,5 +1,6 @@
 package com.sunlands.feo.demo.role;
 
+import com.sunlands.feo.demo.model.role.UserRole;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

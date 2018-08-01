@@ -1,6 +1,6 @@
 package com.sunlands.feo.demo.rest;
 
-import com.sunlands.feo.demo.user.SysUser;
+import com.sunlands.feo.demo.model.user.SysUser;
 import com.sunlands.feo.demo.user.SysUserService;
 import com.sunlands.feo.demo.util.JsonUtil;
 import com.sunlands.feo.demo.util.MD5Util;

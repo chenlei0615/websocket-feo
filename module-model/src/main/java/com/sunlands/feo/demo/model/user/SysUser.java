@@ -1,7 +1,7 @@
-package com.sunlands.feo.demo.user;
+package com.sunlands.feo.demo.model.user;
 
 import com.sunlands.feo.demo.base.BaseEntity;
-import com.sunlands.feo.demo.role.UserRole;
+import com.sunlands.feo.demo.model.role.UserRole;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
@@ -9,7 +9,9 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
-import java.util.*;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * @Project : websocket-feo

@@ -1,6 +1,6 @@
 package com.sunlands.feo.demo.user.impl;
 
-import com.sunlands.feo.demo.user.SysUser;
+import com.sunlands.feo.demo.model.user.SysUser;
 import com.sunlands.feo.demo.user.SysUserDao;
 import com.sunlands.feo.demo.user.SysUserService;
 import org.slf4j.Logger;

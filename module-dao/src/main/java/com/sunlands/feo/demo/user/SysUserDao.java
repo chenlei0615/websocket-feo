@@ -1,5 +1,6 @@
 package com.sunlands.feo.demo.user;
 
+import com.sunlands.feo.demo.model.user.SysUser;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

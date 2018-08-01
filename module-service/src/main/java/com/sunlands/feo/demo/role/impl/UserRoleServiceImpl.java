@@ -1,6 +1,6 @@
 package com.sunlands.feo.demo.role.impl;
 
-import com.sunlands.feo.demo.role.UserRole;
+import com.sunlands.feo.demo.model.role.UserRole;
 import com.sunlands.feo.demo.role.UserRoleRepository;
 import com.sunlands.feo.demo.role.UserRoleService;
 import org.slf4j.Logger;

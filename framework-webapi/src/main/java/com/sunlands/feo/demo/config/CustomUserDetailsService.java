@@ -1,8 +1,8 @@
 package com.sunlands.feo.demo.config;
 
-import com.sunlands.feo.demo.role.UserRole;
+import com.sunlands.feo.demo.model.role.UserRole;
+import com.sunlands.feo.demo.model.user.SysUser;
 import com.sunlands.feo.demo.role.UserRoleService;
-import com.sunlands.feo.demo.user.SysUser;
 import com.sunlands.feo.demo.user.SysUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;

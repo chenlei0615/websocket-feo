@@ -1,5 +1,7 @@
 package com.sunlands.feo.demo.user;
 
+import com.sunlands.feo.demo.model.user.SysUser;
+
 import java.util.List;
 
 /**
