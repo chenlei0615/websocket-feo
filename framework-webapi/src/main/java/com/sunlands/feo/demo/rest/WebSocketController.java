@@ -1,16 +1,20 @@
 package com.sunlands.feo.demo.rest;
 
-import com.sunlands.feo.demo.websocket.WebSocketService;
+import com.sunlands.feo.demo.common.BaseResponse;
+import com.sunlands.feo.demo.common.ResultCode;
+import com.sunlands.feo.demo.entity.WSResponse;
+import com.sunlands.feo.demo.util.WebUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.messaging.handler.annotation.MessageMapping;
+import org.springframework.messaging.handler.annotation.SendTo;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
+import org.springframework.messaging.simp.annotation.SubscribeMapping;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.Arrays;
-import java.util.List;
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * @Project : websocket-feo
@@ -21,71 +25,50 @@ import java.util.List;
  * ------------    --------------    ---------------------------------
  */
 @Controller
-@RequestMapping("websocket")
+@RequestMapping("/")
 public class WebSocketController {
     private static final Logger logger = LoggerFactory.getLogger(WebSocketController.class);
 
-    @Autowired
-    private WebSocketService webSocketService;
+    @Resource
+    private SimpMessagingTemplate simpMessagingTemplate;
 
-    @RequestMapping(value = "/index")
-    public String idnex() {
-
-        return "index";
-    }
-
-    @RequestMapping(value = "/admin")
-    public String admin(Model model) {
-        int num = webSocketService.getOnlineNum();
-        String str = webSocketService.getOnlineUsers();
-        List<String> list = null;
-        if (str.length() > 2) {
-            str = str.substring(0,str.length()-1);
-            String [] strs = str.split(",");
-            list =  Arrays.asList(strs);
-        }
-
-
-        model.addAttribute("num",num);
-        model.addAttribute("users",list);
-        return "admin";
+    @RequestMapping("/helloSocket")
+    public String index(HttpServletRequest request){
+        WebUtils.logRequestParams(request);
+        return "/hello/index";
     }
 
     /**
-     * 个人信息推送
-     * @return
+     * 这个方法是接收客户端发送功公告的WebSocket请求
+     * @param value
      */
-    @RequestMapping("sendmsg")
-    @ResponseBody
-    public String sendmsg(String msg, String username){
-        //第一个参数 :msg 发送的信息内容
-        //第二个参数为用户长连接传的用户人数
-        String [] persons = username.split(",");
-        webSocketService.SendMany(msg,persons);
-        return "success";
+    @MessageMapping("/change-notice")
+    public void greeting(String value){
+        /**将给定的对象进行序列化，使用‘MessageConverter’进行包装转化成一条消息，发送到指定的目标*/
+        this.simpMessagingTemplate.convertAndSend("/topic/notice", value);
     }
 
     /**
-     * 推送给所有在线用户
+     * 功能同上
+     * 当浏览器向服务端发送请求时,通过@MessageMapping映射/change-notice1这个地址,类似于@ResponseMapping
+     * @param value
      * @return
      */
-    @RequestMapping("sendAll")
-    @ResponseBody
-    public String sendAll(String msg){
-        webSocketService.sendAll(msg);
-        return "success";
+    @MessageMapping("/change-notice1")
+    @SendTo("/topic/notice")  //当服务器有消息时,会对订阅了@SendTo中的路径的浏览器发送消息
+    public String greeting1(String value) {
+        return value;
     }
 
     /**
-     * 获取当前在线用户
+     * 当有客户端订阅"/topic/getResponse"，会收到消息
      * @return
      */
-    @RequestMapping("webstatus")
-    public String webstatus(){
-        //当前用户个数
-        int count = webSocketService.getOnlineNum();
-        //当前用户的username
-        webSocketService.getOnlineUsers();
-        return "tongji";
+    @SubscribeMapping("/topic/notice")
+    public BaseResponse<WSResponse> sub(HttpServletRequest request) {
+        WebUtils.logRequestParams(request);
+        WSResponse wsResponse=new WSResponse("感谢你订阅了我。。。");
+        logger.info("XXX用户订阅了我。。。");
+        return new BaseResponse(ResultCode.SUCCESS,wsResponse);
     }
 }
