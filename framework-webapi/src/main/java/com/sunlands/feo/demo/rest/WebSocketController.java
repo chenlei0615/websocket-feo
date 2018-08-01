@@ -39,7 +39,7 @@ public class WebSocketController {
         return "websocket/ws";
     }
 
-    @MessageMapping("/welcome")//1
+    @MessageMapping("welcome")//1
     @SendTo("/topic/getResponse")//2
     public BaseResponse<WSResponse> say(WSMessage message) throws Exception {
         WSResponse wsResponse=new WSResponse("Welcome, " + message.getName() + "!");

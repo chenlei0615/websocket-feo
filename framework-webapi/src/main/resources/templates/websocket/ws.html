@@ -38,7 +38,7 @@
             setConnected(true);
             console.log('开始进行连接Connected: ' + frame);
             stompClient.subscribe('/topic/getResponse', function(respnose){ //4
-                showResponse(JSON.parse(respnose.body).responseMessage);
+                showResponse(JSON.parse(respnose.body).data.responseMessage);
             });
         });
     }
@@ -54,7 +54,7 @@
 
     function sendName() {
         var name = $('#name').val();
-        stompClient.send("ws/welcome", {}, JSON.stringify({ 'name': name }));//5
+        stompClient.send("/app/welcome", {}, JSON.stringify({ 'name': name }));//5
     }
 
     function showResponse(message) {
