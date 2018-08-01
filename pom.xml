@@ -68,17 +68,6 @@
                 <artifactId>module-model</artifactId>
                 <version>${project.version}</version>
             </dependency>
-            <dependency>
-                <groupId>commons-io</groupId>
-                <artifactId>commons-io</artifactId>
-                <version>2.4</version>
-            </dependency>
-            <!--工具校验-->
-            <dependency>
-                <groupId>commons-lang</groupId>
-                <artifactId>commons-lang</artifactId>
-                <version>2.6</version>
-            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -126,7 +115,6 @@
                     </configuration>
                 </plugin>
             </plugins>
-
         </pluginManagement>
     </build>
 </project>
