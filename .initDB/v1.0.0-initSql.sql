@@ -22,7 +22,7 @@ DROP TABLE IF EXISTS `sys_user`;
 CREATE TABLE `sys_user` (
   `id` varchar(255) NOT NULL,
   `create_time` datetime DEFAULT NULL,
-  `deleted` bit(1) DEFAULT NULL,
+  `deleted` bit(1) DEFAULT b'0',
   `modify_time` datetime DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
   `user_name` varchar(255) DEFAULT NULL,
@@ -32,6 +32,9 @@ CREATE TABLE `sys_user` (
 -- ----------------------------
 -- Records of sys_user
 -- ----------------------------
+INSERT INTO `sys_user` VALUES ('8a77c2f764db70720164db70da9a0000', '2018-07-27 19:12:44', '\0', '2018-07-27 19:12:44', '21232f297a57a5a743894a0e4a801fc3', 'chenlei');
+INSERT INTO `sys_user` VALUES ('8a77c2f764db70720164db71a75e0001', '2018-07-27 19:13:36', '\0', '2018-07-27 19:13:36', '63a9f0ea7bb98050796b649e85481845', 'zhao');
+INSERT INTO `sys_user` VALUES ('8a77c2f764db70720164db71fe7b0002', '2018-07-27 19:13:58', '\0', '2018-07-27 19:13:58', 'e10adc3949ba59abbe56e057f20f883e', 'mj');
 
 -- ----------------------------
 -- Table structure for sys_user_role
@@ -49,6 +52,9 @@ CREATE TABLE `sys_user_role` (
 -- ----------------------------
 -- Records of sys_user_role
 -- ----------------------------
+INSERT INTO `sys_user_role` VALUES ('8a77c2f764db70720164db70da9a0000', '1');
+INSERT INTO `sys_user_role` VALUES ('8a77c2f764db70720164db71a75e0001', '2');
+INSERT INTO `sys_user_role` VALUES ('8a77c2f764db70720164db71fe7b0002', '2');
 
 -- ----------------------------
 -- Table structure for user_role
@@ -57,7 +63,7 @@ DROP TABLE IF EXISTS `user_role`;
 CREATE TABLE `user_role` (
   `id` varchar(255) NOT NULL,
   `create_time` datetime DEFAULT NULL,
-  `deleted` bit(1) DEFAULT NULL,
+  `deleted` bit(1) DEFAULT b'0',
   `modify_time` datetime DEFAULT NULL,
   `creator` varchar(255) DEFAULT NULL,
   `role_name` varchar(255) DEFAULT NULL,
@@ -67,20 +73,8 @@ CREATE TABLE `user_role` (
 -- ----------------------------
 -- Records of user_role
 -- ----------------------------
-
-
--- 初始化测试脚本
-insert  into `user_role`(`id`,`role_name`) values (1,'ADMIN'),(2,'USER');
-
-insert  into `sys_user`(`id`,`password`,`user_name`) values (1,'root','root'),(2,'admin','admin');
-
-insert  into `sys_user_role`(`user_id`,`role_id`) values (1,1),(2,2);
-
--- deleted 设置默认值
-ALTER TABLE `sys_user`
-MODIFY COLUMN `deleted`  bit(1) NULL DEFAULT 0 AFTER `create_time`;
-ALTER TABLE `user_role`
-MODIFY COLUMN `deleted`  bit(1) NULL DEFAULT 0 AFTER `create_time`;
+INSERT INTO `user_role` VALUES ('1', '2018-07-27 14:57:24', '\0', '2018-07-27 14:57:18', null, 'ADMIN');
+INSERT INTO `user_role` VALUES ('2', '2018-07-27 14:57:28', '\0', '2018-07-27 14:57:21', null, 'USER');
 
 
 

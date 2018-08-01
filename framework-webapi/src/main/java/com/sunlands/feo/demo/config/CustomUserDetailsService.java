@@ -39,14 +39,14 @@ public class CustomUserDetailsService implements UserDetailsService {
 
         if (user == null) {
 
-            throw new UsernameNotFoundException("UserName " + userName + " not found");
+            throw new UsernameNotFoundException("用户名： " + userName + " not found");
 
         }
 
         List<UserRole> roleList=userRoleService.findByUserId(user.getId());
         List<GrantedAuthority> grantedAuthorities = new ArrayList<GrantedAuthority>();
         if(roleList!=null && roleList.size()>0) {
-            roleList.forEach(r->grantedAuthorities.add(new SimpleGrantedAuthority(r.getRoleName())));
+            roleList.forEach(role->grantedAuthorities.add(new SimpleGrantedAuthority(role.getRoleName())));
         }
         return user;
     }
