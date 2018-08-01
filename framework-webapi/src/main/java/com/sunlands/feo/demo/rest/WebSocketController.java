@@ -25,50 +25,50 @@ import javax.servlet.http.HttpServletRequest;
  * ------------    --------------    ---------------------------------
  */
 @Controller
-@RequestMapping("/")
+@RequestMapping("/ws")
 public class WebSocketController {
     private static final Logger logger = LoggerFactory.getLogger(WebSocketController.class);
 
-    @Resource
-    private SimpMessagingTemplate simpMessagingTemplate;
-
-    @RequestMapping("/helloSocket")
-    public String index(HttpServletRequest request){
-        WebUtils.logRequestParams(request);
-        return "/hello/index";
-    }
-
-    /**
-     * 这个方法是接收客户端发送功公告的WebSocket请求
-     * @param value
-     */
-    @MessageMapping("/change-notice")
-    public void greeting(String value){
-        /**将给定的对象进行序列化，使用‘MessageConverter’进行包装转化成一条消息，发送到指定的目标*/
-        this.simpMessagingTemplate.convertAndSend("/topic/notice", value);
-    }
-
-    /**
-     * 功能同上
-     * 当浏览器向服务端发送请求时,通过@MessageMapping映射/change-notice1这个地址,类似于@ResponseMapping
-     * @param value
-     * @return
-     */
-    @MessageMapping("/change-notice1")
-    @SendTo("/topic/notice")  //当服务器有消息时,会对订阅了@SendTo中的路径的浏览器发送消息
-    public String greeting1(String value) {
-        return value;
-    }
-
-    /**
-     * 当有客户端订阅"/topic/getResponse"，会收到消息
-     * @return
-     */
-    @SubscribeMapping("/topic/notice")
-    public BaseResponse<WSResponse> sub(HttpServletRequest request) {
-        WebUtils.logRequestParams(request);
-        WSResponse wsResponse=new WSResponse("感谢你订阅了我。。。");
-        logger.info("XXX用户订阅了我。。。");
-        return new BaseResponse(ResultCode.SUCCESS,wsResponse);
-    }
+//    @Resource
+//    private SimpMessagingTemplate simpMessagingTemplate;
+//
+//    @RequestMapping("/helloSocket")
+//    public String index(HttpServletRequest request){
+//        WebUtils.logRequestParams(request);
+//        return "/hello/index";
+//    }
+//
+//    /**
+//     * 这个方法是接收客户端发送功公告的WebSocket请求
+//     * @param value
+//     */
+//    @MessageMapping("/change-notice")
+//    public void greeting(String value){
+//        /**将给定的对象进行序列化，使用‘MessageConverter’进行包装转化成一条消息，发送到指定的目标*/
+//        this.simpMessagingTemplate.convertAndSend("/topic/notice", value);
+//    }
+//
+//    /**
+//     * 功能同上
+//     * 当浏览器向服务端发送请求时,通过@MessageMapping映射/change-notice1这个地址,类似于@ResponseMapping
+//     * @param value
+//     * @return
+//     */
+//    @MessageMapping("/change-notice1")
+//    @SendTo("/topic/notice")  //当服务器有消息时,会对订阅了@SendTo中的路径的浏览器发送消息
+//    public String greeting1(String value) {
+//        return value;
+//    }
+//
+//    /**
+//     * 当有客户端订阅"/topic/getResponse"，会收到消息
+//     * @return
+//     */
+//    @SubscribeMapping("/topic/notice")
+//    public BaseResponse<WSResponse> sub(HttpServletRequest request) {
+//        WebUtils.logRequestParams(request);
+//        WSResponse wsResponse=new WSResponse("感谢你订阅了我。。。");
+//        logger.info("XXX用户订阅了我。。。");
+//        return new BaseResponse(ResultCode.SUCCESS,wsResponse);
+//    }
 }

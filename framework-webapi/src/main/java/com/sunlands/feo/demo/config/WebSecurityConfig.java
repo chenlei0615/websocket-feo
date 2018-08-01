@@ -43,9 +43,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
-                //指定登录页是"/login"
                 .loginPage("/login")
-                .failureUrl("/login/?error")
+                .failureUrl("/login?error")
                 .permitAll()
                 .and()
                 .logout()
