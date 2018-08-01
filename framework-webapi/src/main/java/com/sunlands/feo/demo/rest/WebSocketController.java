@@ -2,6 +2,7 @@ package com.sunlands.feo.demo.rest;
 
 import com.sunlands.feo.demo.common.BaseResponse;
 import com.sunlands.feo.demo.common.ResultCode;
+import com.sunlands.feo.demo.entity.WSMessage;
 import com.sunlands.feo.demo.entity.WSResponse;
 import com.sunlands.feo.demo.util.WebUtils;
 import org.slf4j.Logger;
@@ -32,11 +33,19 @@ public class WebSocketController {
     @Resource
     private SimpMessagingTemplate simpMessagingTemplate;
 
-    @RequestMapping("/helloSocket")
+    @RequestMapping("/index")
     public String index(HttpServletRequest request){
         WebUtils.logRequestParams(request);
-        return "/hello/index";
+        return "websocket/ws";
     }
+
+    @MessageMapping("/welcome")//1
+    @SendTo("/topic/getResponse")//2
+    public BaseResponse<WSResponse> say(WSMessage message) throws Exception {
+        WSResponse wsResponse=new WSResponse("Welcome, " + message.getName() + "!");
+        return new BaseResponse(ResultCode.SUCCESS,wsResponse);
+    }
+
 
     /**
      * 这个方法是接收客户端发送功公告的WebSocket请求

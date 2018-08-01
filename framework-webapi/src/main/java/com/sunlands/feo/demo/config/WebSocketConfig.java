@@ -1,12 +1,10 @@
 package com.sunlands.feo.demo.config;
 
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.simp.config.MessageBrokerRegistry;
 import org.springframework.web.socket.config.annotation.AbstractWebSocketMessageBrokerConfigurer;
 import org.springframework.web.socket.config.annotation.EnableWebSocketMessageBroker;
 import org.springframework.web.socket.config.annotation.StompEndpointRegistry;
-import org.springframework.web.socket.server.standard.ServerEndpointExporter;
 
 /**
  * @Project : websocket-feo
@@ -31,6 +29,7 @@ public class WebSocketConfig extends AbstractWebSocketMessageBrokerConfigurer {
                // .setAllowedOrigins("*")//添加允许跨域访问
                 .withSockJS();
     }
+
 
     /**
      * 定义消息代理，通俗一点讲就是设置消息连接请求的各种规范信息
