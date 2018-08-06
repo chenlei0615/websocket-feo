@@ -54,4 +54,5 @@ public interface SysUserService {
      */
     void delete(String id);
 
+    void test();
 }

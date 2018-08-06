@@ -86,8 +86,4 @@ public class UserController {
         return "redirect:/user/list";
     }
 
-    @GetMapping("/403")
-    public String error(){
-        return "403";
-    }
 }

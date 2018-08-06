@@ -6,8 +6,14 @@ import com.sunlands.feo.demo.user.SysUserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -19,8 +25,12 @@ import java.util.List;
  * ------------    --------------    ---------------------------------
  */
 @Service
+@EnableCaching
 public class SysUserServiceImpl implements SysUserService {
     private static final Logger logger = LoggerFactory.getLogger(SysUserServiceImpl.class);
+
+    @Resource
+    private RedisTemplate<String,String> redisTemplate;
 
     @Autowired
     private SysUserDao sysUserDao;
@@ -51,6 +61,7 @@ public class SysUserServiceImpl implements SysUserService {
      * @return
      */
     @Override
+    @Cacheable(value="userInfo-", key="#id")
     public SysUser findUserById(String id) {
         return sysUserDao.findOne(id);
     }
@@ -79,7 +90,18 @@ public class SysUserServiceImpl implements SysUserService {
      * @return
      */
     @Override
+    @CacheEvict(value="userInfo")
     public void delete(String id) {
          sysUserDao.delete(id);
+    }
+
+
+    @Override
+
+    public void test(){
+        ValueOperations<String,String> valueOperations = redisTemplate.opsForValue();
+        valueOperations.set("mykey4", "random1="+Math.random());
+        System.out.println(valueOperations.get("mykey4"));
+
     }
 }
