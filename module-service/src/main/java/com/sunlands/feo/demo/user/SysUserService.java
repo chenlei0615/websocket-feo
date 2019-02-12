@@ -1,6 +1,8 @@
 package com.sunlands.feo.demo.user;
 
 import com.sunlands.feo.demo.model.user.SysUser;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 
 import java.util.List;
 
@@ -55,4 +57,10 @@ public interface SysUserService {
     void delete(String id);
 
     void test();
+
+    @Cacheable(key="'user_'+#id",value="'user'+#id")
+    SysUser getUser(String id);
+
+    @CacheEvict(key="'user_'+#id", value="users", condition="#id!=1")
+    void deleteUser(String id);
 }

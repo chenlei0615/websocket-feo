@@ -63,7 +63,7 @@ public class SysUserServiceImpl implements SysUserService {
     @Override
     @Cacheable(value="userInfo-", key="#id")
     public SysUser findUserById(String id) {
-        return sysUserDao.findOne(id);
+        return sysUserDao.findById(id).get();
     }
 
     /**
@@ -92,16 +92,31 @@ public class SysUserServiceImpl implements SysUserService {
     @Override
     @CacheEvict(value="userInfo")
     public void delete(String id) {
-         sysUserDao.delete(id);
+         sysUserDao.deleteById(id);
     }
 
 
     @Override
-
     public void test(){
         ValueOperations<String,String> valueOperations = redisTemplate.opsForValue();
         valueOperations.set("mykey4", "random1="+Math.random());
         System.out.println(valueOperations.get("mykey4"));
 
     }
+
+
+    @Override
+    public SysUser getUser(String id) {
+        System.out.println(id+"进入实现类获取数据！");
+        SysUser user = new SysUser();
+        user.setId(id);
+        user.setUsername("香菇,难受");
+        return user;
+    }
+
+    @Override
+    public void deleteUser(String id) {
+        System.out.println(id+"进入实现类删除数据！");
+    }
+
 }

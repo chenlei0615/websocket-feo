@@ -63,9 +63,9 @@ public class WebUtils {
      * @param name  session中变量名称
      * @param clazz session中变量的类型
      */
-    public static <T> T getOrCreateSessionAttribute(HttpServletRequest request, String name, Class<T> clazz) {
-        return (T) org.springframework.web.util.WebUtils.getOrCreateSessionAttribute(request.getSession(), name, clazz);
-    }
+//    public static <T> T getOrCreateSessionAttribute(HttpServletRequest request, String name, Class<T> clazz) {
+//        return (T) org.springframework.web.util.WebUtils.getOrCreateSessionAttribute(request.getSession(), name, clazz);
+//    }
 
     /**
      * 取得request参数值,根据是否需要转码配置进行相应的转码工作

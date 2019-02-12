@@ -19,6 +19,4 @@ public interface SysUserDao extends JpaRepository<SysUser,String> {
     @Query(value = "select * from sys_user where user_name =?1 ",nativeQuery = true)
     SysUser findByUserName(String userName);
 
-
-    SysUser findById(String id);
 }
